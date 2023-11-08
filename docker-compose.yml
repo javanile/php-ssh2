@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  sftp:
+    image: drakkan/sftpgo:v2.5.4
+    ports:
+      - 8080:8080
+      - 2022:2022
+
+  php:
+    build: php/8.1
+    volumes:
+      - ./:/app
+    links:
+      - sftp
